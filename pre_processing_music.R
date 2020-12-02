@@ -45,6 +45,12 @@ processed.df$artists <- gsub("[^[:alnum:]\\,]","", processed.df$artists)
 #Removing id as it does not have any analytical value
 processed.df <- subset(processed.df, select = -c(id))
 
+
+#converting duration_ms to seconds and renaming to Avg song duration (sec)
+processed.df$"Avg song duration (sec)" <- processed.df$duration_ms/1000
+processed.df <- subset(processed.df, select = -c(duration_ms))
+
+
 #Final check fore writing to file
 View(processed.df)
 
